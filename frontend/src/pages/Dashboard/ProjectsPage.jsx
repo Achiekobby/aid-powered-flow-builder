@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAppSelector } from "../../hooks/useAppSelector";
+// import { useAppSelector } from "../../hooks/useAppSelector";
 import DashboardLayout from "../../components/Layout/DashboardLayout";
 import { 
   Plus, 
@@ -8,98 +8,27 @@ import {
   MoreVertical, 
   Edit, 
   Trash2, 
-  Copy, 
   Eye,
   Play,
   Pause,
   Archive,
   Smartphone,
-  Users,
-  Activity,
-  Calendar,
-  Globe
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ProjectsPage = () => {
-  const { user } = useAppSelector((state) => state.auth);
+  const navigate = useNavigate();
+  // const { user } = useAppSelector((state) => state.auth);  
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("all");
-  const [viewMode, setViewMode] = useState("grid"); // grid or list
+  const [viewMode, setViewMode] = useState("grid");
+
+  const navigateToCreateProject = () => {
+    navigate("/dashboard/create-project");
+  };
 
   // Mock projects data
   const projects = [
-    {
-      id: 1,
-      name: "Customer Service App",
-      description: "USSD application for customer support and inquiries",
-      status: "active",
-      shortCode: "*123#",
-      sessions: 1247,
-      users: 89,
-      lastModified: "2024-01-15",
-      createdAt: "2024-01-10",
-      icon: "🎯"
-    },
-    {
-      id: 2,
-      name: "Payment Gateway",
-      description: "Mobile money payment processing system",
-      status: "active",
-      shortCode: "*456#",
-      sessions: 2156,
-      users: 156,
-      lastModified: "2024-01-14",
-      createdAt: "2024-01-05",
-      icon: "💳"
-    },
-    {
-      id: 3,
-      name: "Survey Collection",
-      description: "Data collection and survey management system",
-      status: "draft",
-      shortCode: "*789#",
-      sessions: 0,
-      users: 0,
-      lastModified: "2024-01-12",
-      createdAt: "2024-01-08",
-      icon: "📊"
-    },
-    {
-      id: 4,
-      name: "Banking Services",
-      description: "Account balance and transaction history",
-      status: "archived",
-      shortCode: "*999#",
-      sessions: 892,
-      users: 67,
-      lastModified: "2024-01-10",
-      createdAt: "2024-01-01",
-      icon: "🏦"
-    },
-    {
-      id: 5,
-      name: "Health Information",
-      description: "Medical appointment booking and health tips",
-      status: "active",
-      shortCode: "*111#",
-      sessions: 567,
-      users: 43,
-      lastModified: "2024-01-13",
-      createdAt: "2024-01-03",
-      icon: "🏥"
-    },
-    {
-      id: 6,
-      name: "Education Portal",
-      description: "Student registration and course information",
-      status: "draft",
-      shortCode: "*222#",
-      sessions: 0,
-      users: 0,
-      lastModified: "2024-01-11",
-      createdAt: "2024-01-06",
-      icon: "🎓"
-    }
   ];
 
   const getStatusColor = (status) => {
@@ -176,7 +105,7 @@ const ProjectsPage = () => {
               Manage your USSD applications and track their performance
             </p>
           </div>
-          <button className="mt-4 sm:mt-0 inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all duration-200 shadow-lg hover:shadow-xl">
+          <button onClick={navigateToCreateProject} className="mt-4 sm:mt-0 inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all duration-200 shadow-lg hover:shadow-xl">
             <Plus className="w-5 h-5 mr-2" />
             Create New Project
           </button>
@@ -453,7 +382,7 @@ const ProjectsPage = () => {
               : "Get started by creating your first USSD application"
             }
           </p>
-          <button className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all duration-200 shadow-lg hover:shadow-xl">
+          <button onClick={navigateToCreateProject} className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all duration-200 shadow-lg hover:shadow-xl">
             <Plus className="w-5 h-5 mr-2" />
             Create New Project
           </button>

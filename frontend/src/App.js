@@ -12,6 +12,7 @@ import ForgotPasswordPage from "./pages/Auth/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/Auth/ResetPasswordPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ProjectsPage from "./pages/Dashboard/ProjectsPage";
+import CreateProject from "./pages/Dashboard/CreateProject";
 
 // Components
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
@@ -20,7 +21,6 @@ function App() {
   return (
     <Provider store={store}>
       <Routes>
-        {/* Public Routes */}
         <Route
           path="/"
           element={
@@ -93,6 +93,14 @@ function App() {
               <ProjectsPage />
             </ProtectedRoute>
           }
+        />
+        <Route
+        path="/dashboard/create-project"
+        element={
+          <ProtectedRoute>
+            <CreateProject/>
+          </ProtectedRoute>
+        }
         />
 
         {/* Catch all route - redirect to landing page */}
