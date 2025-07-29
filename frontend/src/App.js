@@ -11,6 +11,7 @@ import VerifyAccountPage from "./pages/Auth/VerifyAccountPage";
 import ForgotPasswordPage from "./pages/Auth/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/Auth/ResetPasswordPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import ProjectsPage from "./pages/Dashboard/ProjectsPage";
 
 // Components
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
@@ -81,6 +82,15 @@ function App() {
           element={
             <ProtectedRoute requireAuth={true}>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/projects"
+          element={
+            <ProtectedRoute requireAuth={true}>
+              <ProjectsPage />
             </ProtectedRoute>
           }
         />

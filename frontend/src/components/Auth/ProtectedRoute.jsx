@@ -10,7 +10,6 @@ const ProtectedRoute = ({ children, requireAuth = true }) => {
   const location = useLocation();
 
   useEffect(() => {
-    // Check auth status when component mounts
     dispatch(checkAuthStatus());
   }, [dispatch]);
 

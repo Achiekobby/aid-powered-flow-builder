@@ -231,7 +231,7 @@ export const checkAuthStatus = createAsyncThunk(
       const token = localStorage.getItem('token');
       const user = JSON.parse(localStorage.getItem('user') || 'null');
 
-      if (token && user) {
+      if (!token && !user) {
         // Simulate token validation
         const response = await new Promise((resolve) => {
           setTimeout(() => {
