@@ -160,6 +160,10 @@ const CreateProject = () => {
     return Object.keys(newErrors).length === 0;
   }
 
+  const generateId = ()=>{
+    return Math.random().toString(36).substring(2,15);
+  }
+
   const handleSubmit = async(e)=>{
     e.preventDefault();
     if(!validateForm()) return;
@@ -168,7 +172,7 @@ const CreateProject = () => {
     try{
       // Simulate and API call
       await new Promise((resolve)=>setTimeout(resolve, 1000));
-      navigate("/dashboard/projects");
+      navigate(`/dashboard/builder/${generateId()}`);
     }catch(error){
       console.log("Form Submission Error:", error);
     }finally{
@@ -189,32 +193,32 @@ const CreateProject = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate("/dashboard/projects")}
-            className="mr-4 p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+            className="p-2 mr-4 text-gray-500 rounded-lg transition-colors duration-200 hover:text-gray-700 hover:bg-gray-100"
           >
             <ArrowLeft className="w-5 h-5" />
           </motion.button>
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 via-emerald-800 to-gray-900 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-emerald-800 to-gray-900">
               Create New Project
             </h1>
-            <p className="text-gray-600 text-lg mt-1">
+            <p className="mt-1 text-lg text-gray-600">
               Set up your USSD application and start building
             </p>
           </div>
         </div>
       </motion.div>
 
-      <div className="max-w-5xl mx-auto">
+      <div className="mx-auto max-w-5xl">
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Project Basic Info */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-white rounded-xl shadow-lg border border-gray-200 p-8"
+            className="p-8 bg-white rounded-xl border border-gray-200 shadow-lg"
           >
             <div className="flex items-center mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mr-3">
+              <div className="flex justify-center items-center mr-3 w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-lg">
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-900">Project Information</h2>
@@ -223,7 +227,7 @@ const CreateProject = () => {
             <div className="space-y-6">
               {/* Project Title */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   Project Title *
                 </label>
                 <div className="relative">
@@ -256,9 +260,9 @@ const CreateProject = () => {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="mt-2 text-sm text-red-600 flex items-center"
+                      className="flex items-center mt-2 text-sm text-red-600"
                     >
-                      <AlertCircle className="w-4 h-4 mr-1" />
+                      <AlertCircle className="mr-1 w-4 h-4" />
                       {errors.title}
                     </motion.p>
                   )}
@@ -267,7 +271,7 @@ const CreateProject = () => {
 
               {/* Project Description */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   Description *
                 </label>
                 <textarea
@@ -287,9 +291,9 @@ const CreateProject = () => {
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="text-sm text-red-600 flex items-center"
+                        className="flex items-center text-sm text-red-600"
                       >
-                        <AlertCircle className="w-4 h-4 mr-1" />
+                        <AlertCircle className="mr-1 w-4 h-4" />
                         {errors.description}
                       </motion.p>
                     )}
@@ -311,10 +315,10 @@ const CreateProject = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-xl shadow-lg border border-gray-200 p-8"
+            className="p-8 bg-white rounded-xl border border-gray-200 shadow-lg"
           >
             <div className="flex items-center mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-3">
+              <div className="flex justify-center items-center mr-3 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
                 <Smartphone className="w-5 h-5 text-white" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-900">Choose Category *</h2>
@@ -326,15 +330,15 @@ const CreateProject = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="mb-4 text-sm text-red-600 flex items-center"
+                  className="flex items-center mb-4 text-sm text-red-600"
                 >
-                  <AlertCircle className="w-4 h-4 mr-1" />
+                  <AlertCircle className="mr-1 w-4 h-4" />
                   {errors.category}
                 </motion.p>
               )}
             </AnimatePresence>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               {categories.map((category, index) => {
                 const IconComponent = category.icon;
                 const isSelected = formData.category === category.id;
@@ -360,7 +364,7 @@ const CreateProject = () => {
                         <IconComponent className={`w-5 h-5 ${category.color}`} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900 mb-1">{category.name}</h3>
+                        <h3 className="mb-1 font-semibold text-gray-900">{category.name}</h3>
                         <p className="text-sm text-gray-600">{category.description}</p>
                       </div>
                       <AnimatePresence>
@@ -369,7 +373,7 @@ const CreateProject = () => {
                             initial={{ opacity: 0, scale: 0 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0 }}
-                            className="w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center"
+                            className="flex justify-center items-center w-5 h-5 bg-emerald-500 rounded-full"
                           >
                             <CheckCircle className="w-2 h-2 text-white" />
                           </motion.div>
@@ -387,14 +391,14 @@ const CreateProject = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex items-center justify-between pt-6"
+            className="flex justify-between items-center pt-6"
           >
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="button"
               onClick={() => navigate("/dashboard/projects")}
-              className="px-6 py-3 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-200 font-medium"
+              className="px-6 py-3 font-medium text-gray-700 bg-gray-100 rounded-lg transition-colors duration-200 hover:bg-gray-200"
             >
               Cancel
             </motion.button>
@@ -404,16 +408,16 @@ const CreateProject = () => {
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={isSubmitting}
-              className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+              className="flex items-center px-8 py-3 font-semibold text-white bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-lg shadow-lg transition-all duration-200 hover:from-emerald-600 hover:to-cyan-600 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+                  <div className="mr-2 w-4 h-4 rounded-full border-2 animate-spin border-white/30 border-t-white"></div>
                   Creating...
                 </>
               ) : (
                 <>
-                  <Plus className="w-4 h-4 mr-2" />
+                  <Plus className="mr-2 w-4 h-4" />
                   Create Project & Start Building
                 </>
               )}
