@@ -248,8 +248,6 @@ const useUSSDBuilderStore = create(
                 sourceMenu.options[optionIndex].hasConnection = true;
               }
             }
-
-            
             
             // Create the connection directly
             const connectionId = `${sourceMenuId}-${targetMenuId}-${optionKey}`;
