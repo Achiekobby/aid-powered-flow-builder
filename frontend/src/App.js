@@ -13,7 +13,7 @@ import ResetPasswordPage from "./pages/Auth/ResetPasswordPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ProjectsPage from "./pages/Dashboard/ProjectsPage";
 import CreateProject from "./pages/Dashboard/CreateProject";
-import EnhancedUSSDBuilder from "./pages/Dashboard/Builder/EnhancedUSSDBuilder";
+import SimpleUSSDBuilder from "./pages/Dashboard/Builder/SimpleUSSDBuilder";
 
 // Components
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
@@ -107,7 +107,7 @@ function App() {
           path="/dashboard/builder/:projectId"
           element={
             <ProtectedRoute>
-              <EnhancedUSSDBuilder />
+              <SimpleUSSDBuilder />
             </ProtectedRoute>
           }
         />

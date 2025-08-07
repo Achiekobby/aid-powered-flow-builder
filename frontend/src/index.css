@@ -1,3 +1,100 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global ResizeObserver error handling */
+.react-flow__viewport {
+  overflow: hidden;
+}
+
+/* Prevent ResizeObserver loop errors */
+.react-flow__node {
+  contain: layout style paint;
+}
+
+/* Ensure phone preview fits properly */
+.phone-preview-container {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+/* Smooth scrolling for better UX */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Better handling of ResizeObserver issues */
+.react-flow__renderer {
+  contain: layout style paint;
+}
+
+/* Ensure proper containment for React Flow */
+.react-flow__pane {
+  contain: layout style paint;
+}
+
+/* Full-screen canvas z-index hierarchy - FIXED */
+.react-flow {
+  z-index: 0;
+}
+
+/* Ensure nodes can render anywhere on the canvas */
+.react-flow__node {
+  z-index: 50 !important;
+  position: absolute !important;
+}
+
+.react-flow__node.selected {
+  z-index: 51 !important;
+}
+
+/* Ensure React Flow viewport allows infinite rendering */
+.react-flow__viewport {
+  overflow: visible !important;
+}
+
+.react-flow__pane {
+  overflow: visible !important;
+}
+
+/* Ensure the canvas container allows full node movement */
+.react-flow__container {
+  overflow: visible !important;
+}
+
+/* Phone Screen Button Styles */
+.phone-screen-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.phone-screen-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.phone-screen-button:hover::before {
+  background: linear-gradient(45deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+}
+
+/* Phone screen glow effect */
+.phone-screen-button:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Status bar dots animation */
+.phone-screen-button:hover .status-dot {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

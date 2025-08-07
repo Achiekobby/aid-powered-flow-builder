@@ -1,301 +1,182 @@
-# 🚀 State-of-the-Art USSD Builder
+# 📱 Easy USSD Builder
 
-## Overview
+A simple, intuitive USSD (Unstructured Supplementary Service Data) flow builder that anyone can use - no coding required!
 
-This is a completely reimagined USSD builder with cutting-edge features, modern UI/UX, and professional-grade capabilities. Built with React, Framer Motion, and advanced state management.
+## ✨ Features
 
-## ✨ Key Features
+### 🎯 **Simple & Intuitive**
+- **Visual drag-and-drop** interface powered by React Flow
+- **No technical knowledge required** - perfect for non-developers
+- **Real-time phone preview** to test your flows
+- **Built-in tutorial** to get you started in minutes
 
-### 🎯 Advanced State Management
-- **Zustand Store**: Centralized state management with devtools support
-- **Undo/Redo**: Full history tracking with 20-level undo/redo
-- **Auto-save**: Automatic project saving every 30 seconds
-- **Real-time Updates**: Live state synchronization across components
+### 🏗️ **Three Building Blocks**
+1. **📋 Menu Nodes** - Show options to users (1. Check Balance, 2. Send Money, etc.)
+2. **📝 Input Nodes** - Collect user information (amounts, phone numbers, etc.)
+3. **✅ End Nodes** - Display final messages and end the session
 
-### 🎨 Interactive Canvas
-- **Drag & Drop**: Smooth menu positioning with grid snapping
-- **Visual Connections**: Animated flow lines between menus
-- **Zoom & Pan**: Infinite canvas with zoom (10%-300%)
-- **Minimap**: Bird's eye view with navigation
-- **Keyboard Shortcuts**: Pro-level productivity shortcuts
+### 🚀 **Professional Features**
+- **Smart auto-save** - Never lose your work
+- **Interactive testing** - Test flows before going live
+- **Flow validation** - Automatic checks for common issues
+- **Export/Import** - Share flows with your team
+- **Mobile-responsive** - Works on all devices
 
-### 📱 Enhanced Phone Preview
-- **Multiple Devices**: Phone, tablet, and basic phone mockups
-- **Real Testing**: Interactive USSD flow simulation
-- **Sound Effects**: Audio feedback for user interactions
-- **Session History**: Complete interaction tracking
-- **Device Switching**: Real-time device type switching
+## 🎮 How to Use
 
-### 🔧 Advanced Menu System
-- **6 Menu Types**: Main, Sub, Input, End, Conditional, API
-- **Smart Validation**: Real-time flow validation and error detection
-- **Template System**: Pre-built menu templates
-- **Copy/Paste**: Duplicate menus with one click
-- **Input Types**: Text, Number, Phone, Email, Amount inputs
+### Getting Started
+1. **Open the tutorial** (Help button) to learn the basics
+2. **Create your first flow** using the sample template
+3. **Add building blocks** using the colored buttons
+4. **Connect blocks** by dragging from the dots
+5. **Test your flow** using the phone preview
+6. **Save and deploy** when ready!
 
-### 🎭 Modern UI/UX
-- **Dark Mode**: Full dark/light theme support
-- **Animations**: Smooth Framer Motion animations
-- **Toast Notifications**: Rich feedback system
-- **Loading States**: Beautiful loading indicators
-- **Responsive Design**: Works on all screen sizes
-
-### 🛠️ Professional Tools
-- **Flow Validation**: Comprehensive error detection
-  - Orphaned menus detection
-  - Circular reference prevention
-  - Broken connection identification
-  - Performance optimization suggestions
-- **Export/Import**: JSON project files with versioning
-- **Collaboration**: Multi-user editing indicators
-- **Version Control**: Project versioning and change tracking
-
-### 🚀 Developer Experience
-- **TypeScript Ready**: Full type safety support
-- **Performance Optimized**: Efficient rendering and state updates
-- **Extensible Architecture**: Easy to add new features
-- **Component Library**: Reusable, well-documented components
-
-## 🏗️ Architecture
-
-### Component Structure
+### Building Your Flow
 ```
-EnhancedUSSDBuilder/
-├── EnhancedUSSDBuilder.jsx          # Main container component
-├── components/
-│   ├── AdvancedCanvas.jsx           # Interactive canvas with tools
-│   ├── DraggableMenuCard.jsx        # Draggable menu components
-│   ├── ConnectionLine.jsx           # Visual flow connections
-│   ├── CanvasMinimap.jsx           # Canvas navigation minimap
-│   ├── MenuCreationModal.jsx       # Menu creation interface
-│   ├── FlowValidationPanel.jsx     # Flow analysis and validation
-│   └── EnhancedPhonePreview.jsx    # Interactive phone simulation
-├── store/
-│   └── ussdBuilderStore.js         # Zustand state management
-└── README.md                       # This documentation
+Start → Add Menu → Connect to Next Step → Test → Deploy
 ```
 
-### State Management
-The application uses Zustand for state management with the following structure:
+### Example Flow Structure
+```
+Main Menu
+├─ 1. Check Balance → End (Show Balance)
+├─ 2. Send Money → Input (Amount) → Input (Phone) → End (Confirmation)
+├─ 3. Buy Airtime → Input (Phone) → Input (Amount) → End (Success)
+└─ 0. Exit → End (Goodbye)
+```
 
-```javascript
+## 🎨 Node Types
+
+### Menu Node (Blue)
+- **Purpose**: Present options to users
+- **Example**: "1. Check Balance\n2. Send Money\n3. Exit"
+- **Best Practice**: Keep 3-7 options max
+
+### Input Node (Green)  
+- **Purpose**: Collect user input
+- **Types**: Text, Number, Phone, Email, Date, Amount
+- **Example**: "Enter amount to send: ____"
+
+### End Node (Red)
+- **Purpose**: Show final message and end session
+- **Types**: Success, Thank You, Goodbye, Rating, Feedback
+- **Example**: "Thank you! Your balance is $150.00"
+
+## 🎯 **Individual Option Connectors**
+
+**Revolutionary Feature**: Each menu option has its own connection handle!
+
+### How It Works
+- **🔵 Smart Handles**: Every menu option gets its own blue connector dot
+- **🎨 Visual Feedback**: Handles light up on hover and scale on interaction  
+- **🔗 Precise Routing**: Connect specific options to specific destinations
+- **⚡ Instant Updates**: Real-time visual feedback when connecting
+- **💡 Intuitive UX**: Hover over options to see connection points
+
+### Usage Steps
+1. **Create Menu Node** → Add your options (1. Balance, 2. Transfer, etc.)
+2. **See Blue Dots** → Each option shows a connector on the right side
+3. **Drag to Connect** → Drag from any blue dot to any other node
+4. **Color-Coded Edges** → Connections get different colors automatically
+5. **Smart Labels** → Edges are labeled with the option text
+
+### Visual Example
+```
+Main Menu Node
+├─ 1. Check Balance  ○ ──→ Balance Display Node
+├─ 2. Send Money     ○ ──→ Amount Input Node  
+├─ 3. Buy Airtime    ○ ──→ Phone Input Node
+└─ 0. Exit          ○ ──→ Goodbye Node
+
+○ = Individual connector handles (blue dots)
+```
+
+## 💡 Pro Tips
+
+### For Great User Experience
+- ✅ **Keep it simple** - 3-7 menu options maximum
+- ✅ **Use clear language** - Avoid technical jargon  
+- ✅ **Logical flow** - Make the path intuitive
+- ✅ **Always include "Back"** - Let users navigate easily
+- ✅ **Test thoroughly** - Try all possible paths
+
+### Common Patterns
+- **Authentication**: Menu → Input (PIN) → Action → End
+- **Balance Inquiry**: Menu → End (Show Balance)
+- **Money Transfer**: Menu → Input (Amount) → Input (Phone) → Confirm → End
+- **Airtime Purchase**: Menu → Input (Phone) → Input (Amount) → End
+
+## 🛠️ Technical Details
+
+### Built With
+- **React Flow** - Smooth node-based editor
+- **Framer Motion** - Beautiful animations
+- **Tailwind CSS** - Modern styling
+- **Lucide Icons** - Clean, consistent icons
+
+### File Structure
+```
+SimpleUSSDBuilder.jsx     # Main builder component
+nodes/
+  ├─ MenuNode.jsx         # Menu option blocks
+  ├─ InputNode.jsx        # Input collection blocks
+  └─ EndNode.jsx          # Session ending blocks
+SimplePhonePreview.jsx    # Interactive phone simulator
+QuickTutorial.jsx         # Built-in help system
+```
+
+### Data Format
+Flows are stored as simple JSON with nodes and edges:
+```json
 {
-  project: { /* Project metadata */ },
-  canvas: { /* Canvas state (zoom, pan, selection) */ },
-  menus: { /* Menu collection with advanced properties */ },
-  connections: { /* Visual connections between menus */ },
-  testing: { /* Real-time testing state */ },
-  history: { /* Undo/redo history */ },
-  ui: { /* UI state (theme, notifications, loading) */ },
-  templates: { /* Pre-built menu templates */ },
-  actions: { /* All state mutations */ }
+  "nodes": [
+    {
+      "id": "menu-1",
+      "type": "menuNode", 
+      "data": {
+        "title": "Main Menu",
+        "options": [
+          {"key": "1", "text": "Check Balance"},
+          {"key": "0", "text": "Exit"}
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "menu-1-end-1",
+      "source": "menu-1",
+      "target": "end-1",
+      "label": "Option 1"
+    }
+  ]
 }
 ```
+
+## 🎯 Target Users
+
+### Perfect For
+- **Business owners** wanting to add phone services
+- **Product managers** designing customer experiences  
+- **Support teams** creating help systems
+- **Telecom operators** building USSD services
+- **Anyone** who needs phone-based interactions
+
+### No Need For
+- Programming knowledge
+- Technical background
+- Complex software
+- Expensive tools
 
 ## 🚀 Getting Started
 
-### Installation
-```bash
-cd ussd-builder/frontend
-npm install zustand react-dnd react-dnd-html5-backend @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities react-hot-toast react-zoom-pan-pinch
-```
-
-### Usage
-```jsx
-import EnhancedUSSDBuilder from './pages/Dashboard/Builder/EnhancedUSSDBuilder';
-
-function App() {
-  return <EnhancedUSSDBuilder />;
-}
-```
-
-## 🎮 User Guide
-
-### Creating Menus
-1. **Right-click** on canvas to create a menu
-2. **Choose menu type** from the creation modal
-3. **Configure properties** based on menu type
-4. **Connect menus** by dragging from connection points
-
-### Canvas Navigation
-- **Mouse wheel**: Zoom in/out
-- **Middle click + drag**: Pan canvas
-- **Ctrl+Z/Y**: Undo/redo
-- **Ctrl+N**: Create new menu
-- **Ctrl+D**: Duplicate selected menu
-- **Delete**: Remove selected menu
-
-### Testing Your Flow
-1. Click **"Start Test"** in phone preview
-2. **Enter options** as a real user would
-3. **Navigate through** your USSD flow
-4. **View session history** for debugging
-
-### Flow Validation
-1. Click **validation button** in canvas toolbar
-2. **Review errors** and warnings
-3. **Click issues** to navigate to problem areas
-4. **Export reports** for documentation
-
-## 🔧 Advanced Features
-
-### Menu Types
-
-#### 1. Main Menu
-- Entry point of your USSD application
-- Automatically includes exit option
-- Only one per project
-
-#### 2. Sub Menu
-- Regular menus with options
-- Can connect to other menus
-- Supports up to 9 options
-
-#### 3. Input Menu
-- Collects user data
-- Multiple input types (text, number, phone, email, amount)
-- Validation rules support
-- Variable storage
-
-#### 4. End Menu
-- Terminates USSD session
-- Final message to user
-- No further navigation
-
-#### 5. Conditional Menu
-- Routes based on variables
-- Supports complex logic
-- Multiple condition operators
-
-#### 6. API Menu
-- Fetches external data
-- Configurable endpoints
-- Timeout handling
-- Error management
-
-### Connection Types
-- **Flow**: Standard navigation
-- **Conditional**: Logic-based routing
-- **API**: External data fetching
-- **Error**: Error handling paths
-
-### Validation Rules
-- **Orphaned Menu Detection**: Finds unreachable menus
-- **Circular Reference Prevention**: Prevents infinite loops
-- **Performance Analysis**: Optimization suggestions
-- **Connection Validation**: Broken link detection
-
-## 🎨 Customization
-
-### Themes
-The application supports full theming:
-```javascript
-// Toggle theme
-const { actions: { toggleTheme } } = useUSSDBuilderStore();
-toggleTheme();
-```
-
-### Device Types
-Support for multiple device mockups:
-- **Smartphone**: Modern touch device
-- **Tablet**: Larger screen format
-- **Basic Phone**: Traditional USSD device
-
-### Sound Effects
-Interactive audio feedback:
-- **Keypress sounds**: User input feedback
-- **Navigation sounds**: Menu transitions
-- **Error sounds**: Validation failures
-
-## 🔒 Security Features
-
-### Input Sanitization
-- All user inputs are sanitized
-- XSS prevention
-- SQL injection protection
-
-### Rate Limiting
-- API call throttling
-- User interaction limits
-- Session management
-
-### Data Validation
-- Client-side validation
-- Server-side verification
-- Type checking
-
-## 📊 Performance
-
-### Optimizations
-- **Virtual scrolling** for large menus
-- **Lazy loading** of components
-- **Memoized calculations** for complex flows
-- **Efficient re-rendering** with React optimization
-
-### Metrics
-- **Canvas rendering**: 60fps smooth interactions
-- **State updates**: Sub-millisecond response times
-- **Memory usage**: Optimized for large projects
-- **Bundle size**: Code-splitting for faster loads
-
-## 🧪 Testing
-
-### Interactive Testing
-- **Real-time simulation** of USSD flows
-- **Session recording** for debugging
-- **Multiple device testing**
-- **Edge case validation**
-
-### Flow Validation
-- **Comprehensive analysis** of menu flows
-- **Performance suggestions**
-- **Error detection and reporting**
-- **Best practice recommendations**
-
-## 🚀 Future Enhancements
-
-### Planned Features
-- **Multi-language support** for international projects
-- **A/B testing framework** for flow optimization
-- **Analytics dashboard** with user behavior insights
-- **API integration wizard** for common services
-- **Template marketplace** with community templates
-- **Collaborative editing** with real-time sync
-- **Voice preview** with text-to-speech
-- **Mobile app** for on-the-go editing
-
-### Integration Possibilities
-- **Webhook support** for external notifications
-- **Database connectors** for dynamic content
-- **Payment gateway integration**
-- **SMS fallback options**
-- **Multi-channel support** (WhatsApp, Telegram)
-
-## 🛟 Support
-
-### Keyboard Shortcuts
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl+Z` | Undo |
-| `Ctrl+Y` | Redo |
-| `Ctrl+S` | Save |
-| `Ctrl+N` | New Menu |
-| `Ctrl+D` | Duplicate |
-| `Delete` | Remove |
-| `Ctrl+E` | Export |
-| `Ctrl+I` | Import |
-| `Ctrl+`` | Toggle Theme |
-
-### Troubleshooting
-1. **Canvas not responding**: Try refreshing or clearing browser cache
-2. **Menus not connecting**: Check validation panel for errors
-3. **Testing not working**: Ensure main menu exists
-4. **Export failing**: Check for circular references
-
-## 📄 License
-
-This enhanced USSD builder is designed to be a showcase of modern web development practices and cutting-edge user experience design.
+1. Click **"Help"** to see the interactive tutorial
+2. Try the **"Create Sample Flow"** to see an example
+3. Start building your own flow step by step
+4. Use the **phone preview** to test everything
+5. Save and deploy when ready!
 
 ---
 
-*Built with ❤️ using React, Framer Motion, Zustand, and modern web technologies.*
+**Made with ❤️ for everyone who wants to build great phone experiences without the complexity!**
